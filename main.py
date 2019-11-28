@@ -77,10 +77,9 @@ for i in range(number_of_projects):
     project_id = project_link[-6:]
     project_ids.append(project_id)
     if (project_id + "\n") not in last_sent:
-        logger.info("project id %s was not in the last_sent list. adding it...", project_id)
-        file_change_flag = True
-        logger.info("sending the post to Telegram...")
+        logger.info("project id %s was not in last_sent. sending the post to Telegram...", project_id)
         sendMessage("*{}*\n\n {}\n\n[لینک به پروژه]({})".format(project_title, project_desc, project_link))
+        file_change_flag = True
 
 if file_change_flag:
     logger.info("saving the changes to the last_sent file")
