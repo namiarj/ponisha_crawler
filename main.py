@@ -75,9 +75,9 @@ for i in range(number_of_projects):
     project_desc = projects[i][1].text_content().strip()
     project_link = projects[i][0][0].attrib["href"][:33]
     project_id = project_link[-6:]
+    project_ids.append(project_id)
     if (project_id + "\n") not in last_sent:
         logger.info("project id %s was not in the last_sent list. adding it...", project_id)
-        project_ids.append(project_id)
         file_change_flag = True
         logger.info("sending the post to Telegram...")
         sendMessage("*{}*\n\n {}\n\n[لینک به پروژه]({})".format(project_title, project_desc, project_link))
