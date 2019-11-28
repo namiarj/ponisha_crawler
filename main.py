@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import logging
 import urllib.request
 import urllib.parse
@@ -70,8 +71,8 @@ else:
 project_ids = []
 file_change_flag = False
 for i in range(number_of_projects):
-    project_title = projects[i][0][0][0].text_content()
-    project_desc = projects[i][1].text_content()
+    project_title = projects[i][0][0][0].text_content().strip()
+    project_desc = projects[i][1].text_content().strip()
     project_link = projects[i][0][0].attrib["href"][:33]
     project_id = project_link[-6:]
     if (project_id + "\n") not in last_sent:
