@@ -73,6 +73,12 @@ file_change_flag = False
 for i in range(number_of_projects):
     project_title = projects[i][0][0][0].text_content().strip()
     project_desc = projects[i][1].text_content().strip()
+    
+    illegal_chars = "*[]_`~" # Remove special chars to prevent messing up markdown format
+	for char in illegal_chars:
+		project_title = project_title.replace(char, "")
+		project_desc = project_desc.replace(char, "")
+    
     project_link = projects[i][0][0].attrib["href"][:33]
     project_id = project_link[-6:]
     project_ids.append(project_id)
